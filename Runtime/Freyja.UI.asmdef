@@ -1,0 +1,16 @@
+{
+    "name": "Freyja.UI",
+    "rootNamespace": "Freyja.UI",
+    "references": [
+        "GUID:9af6f7f1fd0583f43b3fb0ad468de099"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -27,6 +27,15 @@ namespace Freyja.UI
 
         #endregion
 
+        #region Properties
+
+        public List<Selectable> Selectables
+        {
+            get => m_Selectables;
+        }
+
+        #endregion
+
         #region Methods
 
         protected virtual void Start()

@@ -2,7 +2,7 @@
 
 namespace Freyja.UI
 {
-    public class Logger
+    public static class Logger
     {
         private static Log _show;
 

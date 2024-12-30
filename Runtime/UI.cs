@@ -49,6 +49,10 @@ namespace Freyja.UI
             {
                 Hide();
             }
+            else
+            {
+                Show();
+            }
         }
 
         public virtual void Show()

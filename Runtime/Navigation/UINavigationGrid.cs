@@ -6,7 +6,7 @@ using Sirenix.OdinInspector;
 
 namespace Freyja.UI
 {
-    [AddComponentMenu("Freyja/UI/UI Navigation Grid")]
+    [AddComponentMenu("Freyja/UI/Navigations/UI Navigation Grid")]
     public class UINavigationGrid : UINavigation
     {
         #region Fields

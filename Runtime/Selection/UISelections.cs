@@ -7,7 +7,7 @@ using Sirenix.OdinInspector;
 
 namespace Freyja.UI
 {
-    [AddComponentMenu("Freyja/UI/UI Selections")]
+    [AddComponentMenu("Freyja/UI/Selections/UI Selections")]
     public class UISelections : MonoBehaviour
     {
         #region Constantas

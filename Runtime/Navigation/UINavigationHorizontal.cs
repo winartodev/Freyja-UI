@@ -3,8 +3,8 @@ using UnityEngine.UI;
 
 namespace Freyja.UI
 {
-    [AddComponentMenu("Freyja/UI/UI Navigation Vertical")]
-    public class UINavigationVertical : UINavigation
+    [AddComponentMenu("Freyja/UI/Navigations/UI Navigation Horizontal")]
+    public class UINavigationHorizontal : UINavigation
     {
         #region Methods
 
@@ -16,8 +16,8 @@ namespace Freyja.UI
 
                 navigation.mode = Navigation.Mode.Explicit;
 
-                navigation.selectOnUp = i > 0 ? m_Selectables[i - 1] : null;
-                navigation.selectOnDown = i < m_Selectables.Count - 1 ? m_Selectables[i + 1] : null;
+                navigation.selectOnRight = i < m_Selectables.Count - 1 ? m_Selectables[i + 1] : null;
+                navigation.selectOnLeft = i > 0 ? m_Selectables[i - 1] : null;
 
                 m_Selectables[i].navigation = navigation;
             }

@@ -19,15 +19,15 @@ namespace Freyja.UI
 
         #region Fields
 
-    #if UNITY_EDITOR && ODIN_INSPECTOR
+        #if UNITY_EDITOR && ODIN_INSPECTOR
         [TitleGroup(ConfigGrp)]
-    #endif
+        #endif
         [SerializeField]
         private bool m_AlwaysGetFirstIndex;
 
-    #if UNITY_EDITOR && ODIN_INSPECTOR
+        #if UNITY_EDITOR && ODIN_INSPECTOR
         [TitleGroup(UIGrp)]
-    #endif
+        #endif
         [Space(8)]
         [SerializeField]
         private List<UISelection> m_UISelections;
@@ -36,7 +36,7 @@ namespace Freyja.UI
 
         #region Privates
 
-        private int _selectedIndex;
+        public int SelectedIndex { get; private set; }
         private readonly Dictionary<string, UISelection> _selectionsDict = new Dictionary<string, UISelection>();
 
         #endregion
@@ -60,7 +60,7 @@ namespace Freyja.UI
                 return m_UISelections[0];
             }
 
-            return m_UISelections[_selectedIndex];
+            return m_UISelections[SelectedIndex];
         }
 
         private void RegisterUISelections()
@@ -87,7 +87,22 @@ namespace Freyja.UI
             _selectionsDict.Clear();
         }
 
-        public void GetUISelection(string selectedName)
+        public UISelection GetUISelection(int index)
+        {
+            if (m_UISelections == null)
+            {
+                return null;
+            }
+
+            if (index < 0 || index >= m_UISelections.Count)
+            {
+                return null;
+            }
+
+            return m_UISelections[index];
+        }
+
+        public void SelectUI(string selectedName)
         {
             if (m_UISelections == null || m_UISelections.Count <= 0)
             {
@@ -105,11 +120,35 @@ namespace Freyja.UI
             {
                 if (key == uiSelection.name)
                 {
-                    _selectedIndex = currentIndex;
+                    SelectedIndex = currentIndex;
                     break;
                 }
 
                 currentIndex++;
+            }
+        }
+
+        public void GetNextSelection()
+        {
+            if (SelectedIndex >= m_UISelections.Count - 1)
+            {
+                SelectedIndex = 0;
+            }
+            else
+            {
+                SelectedIndex++;
+            }
+        }
+
+        public void GetPreviousSelection()
+        {
+            if (SelectedIndex <= 0)
+            {
+                SelectedIndex = m_UISelections.Count - 1;
+            }
+            else
+            {
+                SelectedIndex--;
             }
         }
 

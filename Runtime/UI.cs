@@ -17,16 +17,16 @@ namespace Freyja.UI
 
         #region Fields
 
-    #if UNITY_EDITOR && ODIN_INSPECTOR
+        #if UNITY_EDITOR && ODIN_INSPECTOR
         [TitleGroup(ConfigGrp)]
-    #endif
+        #endif
         [SerializeField]
         protected bool m_HideOnStart = true;
 
-    #if UNITY_EDITOR && ODIN_INSPECTOR
+        #if UNITY_EDITOR && ODIN_INSPECTOR
         [TitleGroup(UIGrp)]
         [Required]
-    #endif
+        #endif
         [SerializeField]
         protected RectTransform m_Content;
 
@@ -48,10 +48,6 @@ namespace Freyja.UI
             if (m_HideOnStart)
             {
                 Hide();
-            }
-            else
-            {
-                Show();
             }
         }
 

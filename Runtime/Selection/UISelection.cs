@@ -28,7 +28,7 @@ namespace Freyja.UI
             OnSelectPerformed?.Invoke();
         }
 
-        public void OnDeselect(BaseEventData eventData)
+        public virtual void OnDeselect(BaseEventData eventData)
         {
             OnDeselectPerformed?.Invoke();
         }

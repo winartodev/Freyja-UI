@@ -57,6 +57,7 @@ namespace Freyja.UI
         {
             if (m_AlwaysGetFirstIndex)
             {
+                SelectedIndex = 0;
                 return m_UISelections[0];
             }
 

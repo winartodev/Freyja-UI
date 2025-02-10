@@ -11,16 +11,16 @@ namespace Freyja.UI
     {
         #region Fields
 
-    #if ODIN_INSPECTOR
+        #if UNITY_EDITOR && ODIN_INSPECTOR
         [TitleGroup(UIGrp)]
         [Required]
-    #endif
+        #endif
         [SerializeField]
         private GridLayoutGroup m_GridLayoutGroup;
 
-    #if ODIN_INSPECTOR
+        #if UNITY_EDITOR && ODIN_INSPECTOR
         [TitleGroup(UIGrp)]
-    #endif
+        #endif
         [SerializeField]
         private RectTransform m_Content;
 

@@ -21,7 +21,7 @@ namespace Freyja.UI
         [TitleGroup(ConfigGrp)]
         #endif
         [SerializeField]
-        protected bool m_HideOnStart = true;
+        protected bool m_HideOnStart;
 
         #if UNITY_EDITOR && ODIN_INSPECTOR
         [TitleGroup(UIGrp)]

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 
 using UnityEngine;
+using UnityEngine.UI;
 #if UNITY_EDITOR && ODIN_INSPECTOR
 using Sirenix.OdinInspector;
 #endif
@@ -30,14 +31,14 @@ namespace Freyja.UI
         #endif
         [Space(8)]
         [SerializeField]
-        private List<UISelection> m_UISelections;
+        private List<Selectable> m_Selectables;
 
         #endregion
 
         #region Privates
 
         public int SelectedIndex { get; private set; }
-        private readonly Dictionary<string, UISelection> _selectionsDict = new Dictionary<string, UISelection>();
+        private readonly Dictionary<string, Selectable> _selectionsDict = new Dictionary<string, Selectable>();
 
         #endregion
 
@@ -53,34 +54,34 @@ namespace Freyja.UI
             UnRegisterUISelections();
         }
 
-        public UISelection GetLatestSelection()
+        public Selectable GetLatestSelection()
         {
             if (m_AlwaysGetFirstIndex)
             {
                 SelectedIndex = 0;
-                return m_UISelections[0];
+                return m_Selectables[0];
             }
 
-            return m_UISelections[SelectedIndex];
+            return m_Selectables[SelectedIndex];
         }
 
         private void RegisterUISelections()
         {
-            if (m_UISelections == null || m_UISelections.Count <= 0)
+            if (m_Selectables == null || m_Selectables.Count <= 0)
             {
                 return;
             }
 
-            for (var i = 0; i < m_UISelections.Count; i++)
+            for (var i = 0; i < m_Selectables.Count; i++)
             {
-                var uiSelection = m_UISelections[i];
+                var uiSelection = m_Selectables[i];
                 _selectionsDict.Add(uiSelection.name, uiSelection);
             }
         }
 
         private void UnRegisterUISelections()
         {
-            if (m_UISelections == null || m_UISelections.Count <= 0)
+            if (m_Selectables == null || m_Selectables.Count <= 0)
             {
                 return;
             }
@@ -88,24 +89,24 @@ namespace Freyja.UI
             _selectionsDict.Clear();
         }
 
-        public UISelection GetUISelection(int index)
+        public Selectable GetSelectable(int index)
         {
-            if (m_UISelections == null)
+            if (m_Selectables == null)
             {
                 return null;
             }
 
-            if (index < 0 || index >= m_UISelections.Count)
+            if (index < 0 || index >= m_Selectables.Count)
             {
                 return null;
             }
 
-            return m_UISelections[index];
+            return m_Selectables[index];
         }
 
         public void SelectUI(string selectedName)
         {
-            if (m_UISelections == null || m_UISelections.Count <= 0)
+            if (m_Selectables == null || m_Selectables.Count <= 0)
             {
                 return;
             }
@@ -131,7 +132,7 @@ namespace Freyja.UI
 
         public void GetNextSelection()
         {
-            if (SelectedIndex >= m_UISelections.Count - 1)
+            if (SelectedIndex >= m_Selectables.Count - 1)
             {
                 SelectedIndex = 0;
             }
@@ -145,7 +146,7 @@ namespace Freyja.UI
         {
             if (SelectedIndex <= 0)
             {
-                SelectedIndex = m_UISelections.Count - 1;
+                SelectedIndex = m_Selectables.Count - 1;
             }
             else
             {
